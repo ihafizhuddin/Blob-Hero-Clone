@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour{
     public float SmoothSpeed = 0.125f;
     public Transform playerTransform;
     public Vector3 offset;
+    public bool isLookAt = true;
     // Start is called before the first frame update
     // void Start()
     // {
@@ -19,6 +20,7 @@ public class CameraFollow : MonoBehaviour{
         Vector3 desiredPosition = playerTransform.position + offset;
         Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, SmoothSpeed);
         transform.position = SmoothedPosition;
+        if(!isLookAt)return;
         transform.LookAt(playerTransform);
     }
 }

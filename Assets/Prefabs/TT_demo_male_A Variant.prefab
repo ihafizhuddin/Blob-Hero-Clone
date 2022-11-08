@@ -57,7 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
       propertyPath: m_Name
-      value: TT_demo_male_A
+      value: TT_demo_male_A Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
@@ -66,6 +70,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
   m_PrefabInstance: {fileID: 8448722572468100375}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &-5332361206427945186
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366871954325643527}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!143 &1510787570
 CharacterController:
   m_ObjectHideFlags: 0
@@ -96,7 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1625aa049628d842ad51ca32d96fe06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charController: {fileID: 0}
-  movementSpeed: 10
   rotationSpeed: 250
-  anim: {fileID: 0}
+  movementSpeed: 10
+  healthPoint: 100
+  isDeath: 0
+  forceFieldRadius: 0
+  forceFieldDuration: 0
+  forceFieldDamage: 0
