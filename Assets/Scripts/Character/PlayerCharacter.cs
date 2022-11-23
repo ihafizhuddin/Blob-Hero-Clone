@@ -87,4 +87,27 @@ public class PlayerCharacter : BaseCharacter{
     //     }
     // }
 
+    public virtual void ReceiveDamage(float damage){
+        base.ReceiveDamage(damage);
+        GameManager.get.updateHPBar();
+        GameManager.get.updateNewHPBar();
+
+        // Debug.Log("Receive Damage : " + damage);
+    }
+
+    protected override void OnDead(){
+        base.OnDead();
+        anim.SetBool("isDeath", true);
+        Invoke("afterDead", 2f);
+    }
+    protected override void afterDead(){
+        GameManager.get.GameOver();
+    }
+    public void OnRespawn(){
+        anim.SetBool("isDeath", false);
+        isDeath = false;
+        healthPoint = maxHP;
+        HP = maxHP;
+    }
+
 }

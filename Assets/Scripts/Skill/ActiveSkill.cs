@@ -9,6 +9,7 @@ public abstract class ActiveSkill : BaseSkill{
     // [SerializeField]protected Action skillCode;
     protected override void Update(){
         base.Update();
+        if(level == 0)return;
         if(currentCooldown <= 0){
             Action();
             currentCooldown = cooldown;
@@ -19,4 +20,5 @@ public abstract class ActiveSkill : BaseSkill{
     }
     
     public abstract void Action();
+    
 }

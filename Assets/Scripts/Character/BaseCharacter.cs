@@ -10,6 +10,10 @@ public abstract class BaseCharacter : MonoBehaviour{
     [SerializeField] protected float rotationSpeed = 100;
     // [SerializeField]protected float health = 100;
     [SerializeField]protected float movementSpeed = 10;
+    
+    [SerializeField]public float maxHP = 100;
+    [SerializeField]public float HP = 100;
+
     [SerializeField]protected float healthPoint = 100;
     [SerializeField]public bool isDeath = false;
     public abstract void Move();
@@ -19,7 +23,9 @@ public abstract class BaseCharacter : MonoBehaviour{
         if(healthPoint <= 0){
             anim.SetTrigger("Death");
             isDeath = true;
+            OnDead();
         }
+        HP = healthPoint;
 
         // Debug.Log("Receive Damage : " + damage);
     }
@@ -33,4 +39,10 @@ public abstract class BaseCharacter : MonoBehaviour{
     protected virtual void Update(){
         Move();
     }
+    protected virtual void OnDead(){
+        anim.SetTrigger("Death");
+        isDeath = true;
+    }
+    protected virtual void afterDead(){}
+    // protected abstract void OnSpawn();
 }

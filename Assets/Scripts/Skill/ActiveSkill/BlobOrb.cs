@@ -13,9 +13,22 @@ public class BlobOrb : ActiveSkill{
         // base.Update();
         transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime,0));
         if(Input.GetKeyDown(KeyCode.Space)){
-            Action();
+            OnLevelUp();
         }
     }
+
+    public override void OnLevelUp(){
+        base.OnLevelUp();
+        Action();
+    }
+    public override void OnLevelReset(){
+        base.OnLevelReset();
+        foreach (Transform child in this.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        orbs = new List<RotatingProjectile>();
+    }
+
 
     public override void Action(){
         //instantiate orb on circle

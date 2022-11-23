@@ -9,11 +9,15 @@ public class EnemyController : BaseCharacter{
     public float attackDuration;
     float currentAttackDuration;
     float distanceToPlayer;
+    public StateBar hpBar;
+    public int expToAdd = 5;
 
     
     protected override void Start(){
         base.Start();
         FindTarget();
+        hpBar.maxValue = maxHP;
+        hpBar.currentValue = HP;
     }
     protected override void Update(){
         base.Update();
@@ -25,10 +29,11 @@ public class EnemyController : BaseCharacter{
         if(distanceToPlayer < TargetPlayer.forceFieldRadius){
             float damage = TargetPlayer.forceFieldDamage *((TargetPlayer.forceFieldRadius - distanceToPlayer)/TargetPlayer.forceFieldRadius);
             ReceiveDamage(damage*Time.deltaTime);
+            // hpBar.currentValue = HP;
         }
     }
     public void FindTarget(){
-        if(TargetPlayer !=null) return;
+        // if(TargetPlayer !=null) return;
         TargetPlayer = GameObject.FindObjectOfType<PlayerCharacter>();
     }
 
@@ -61,11 +66,39 @@ public class EnemyController : BaseCharacter{
             
         }
 
-    }
-    // public override void ReceiveDamage(float damage){
-    //     base.ReceiveDamage(damage);
-    // //     if(damage > 0){
 
-    // //     }
-    // }
+    }
+    public void OnRespawn(){
+        isDeath = false;
+        healthPoint = maxHP;
+        HP = maxHP;
+        hpBar.gameObject.SetActive(true);
+        hpBar.currentValue = HP;
+        hpBar.setCurValScaled();
+
+    }
+    protected override void OnDead(){
+        base.OnDead();
+        hpBar.gameObject.SetActive(false);
+        Debug.Log("Enemy Death Executed");
+        GameManager.get.addExp(expToAdd);
+        // Debug.Log("D");
+        // Destroy(this.gameObject, 1f);
+        Invoke("afterDead", 1.5f);
+        EnemySpawner.enemyCount--;
+    }
+    protected override void afterDead(){
+        base.afterDead();
+        this.gameObject.SetActive(false);
+    }
+
+    public override void ReceiveDamage(float damage){
+        base.ReceiveDamage(damage);
+        // hpBar.decreaseCurValue(damage);
+        hpBar.currentValue = HP;
+        hpBar.setCurValScaled();
+    //     if(damage > 0){
+
+    //     }
+    }
 }

@@ -614,7 +614,23 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: LEGACY_INPUT_MANAGER
+    EmbeddedLinux: LEGACY_INPUT_MANAGER
+    GameCoreScarlett: LEGACY_INPUT_MANAGER
+    GameCoreXboxOne: LEGACY_INPUT_MANAGER
+    LinuxHeadlessSimulation: LEGACY_INPUT_MANAGER
+    Lumin: LEGACY_INPUT_MANAGER
+    Nintendo Switch: LEGACY_INPUT_MANAGER
+    PS4: LEGACY_INPUT_MANAGER
+    PS5: LEGACY_INPUT_MANAGER
+    Stadia: LEGACY_INPUT_MANAGER
+    Standalone: LEGACY_INPUT_MANAGER
+    WebGL: LEGACY_INPUT_MANAGER
+    Windows Store Apps: LEGACY_INPUT_MANAGER
+    XboxOne: LEGACY_INPUT_MANAGER
+    iPhone: LEGACY_INPUT_MANAGER
+    tvOS: LEGACY_INPUT_MANAGER
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
